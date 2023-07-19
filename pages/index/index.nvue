@@ -44,7 +44,7 @@ const http = new Http({
       console.log('客户端断网了');
     }
   },
-  debug: true,
+  debug: false,
   // timeout: 10,
   takeTokenMethod: 'body',
   takenTokenKeyName: 'user_token',

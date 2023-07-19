@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "lwu-request": "^1.6.4"
+    "lwu-css": "^1.0.1",
+    "lwu-request": "file:../../lwu-request/packages/uniapp-request",
+    "lwu-xhr": "file:../../lwu-xhr/packages/lwu-xhr"
   }
 }
