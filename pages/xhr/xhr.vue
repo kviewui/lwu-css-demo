@@ -22,6 +22,7 @@
 	// 响应拦截
 	request.setResponseInterceptor((response) => {
 		console.log(response);
+		response['code'] = 300;
 		return response;
 	})
 	
@@ -30,52 +31,61 @@
 	// 	console.log('请求超时了');
 	// })
 	
-	function Test1() {
-		return request
-				.timeout(10, () => {
-					console.log('请求超时了啊');
-				})
-				.get('/v1/home/siteinfo', {
-					baseURL: 'https://api.kags.cn'
-				})
-	}
+	// function Test1() {
+	// 	return request
+	// 			.get('/v1/home/siteinfo', {
+	// 				baseURL: 'https://api.kags.cn'
+	// 			})
+	// }
 	
-	function Test2() {
-		return request
-				.get('/v1/home/siteinfo', {
-					baseURL: 'https://api.kags.cn'
-				})
-	}
+	// function Test2() {
+	// 	return request
+	// 			.setTimeout(0)
+	// 			.get('/v1/home/siteinfo', {
+	// 				baseURL: 'https://api.kags.cn',
+	// 				params: {
+	// 					a: 1,
+	// 					b: 2
+	// 				}
+	// 			})
+	// }
 	
-	Promise.all([Test1(), Test2()])
-		.then((result) => {
-			console.log(result);
+	// Promise.all([Test1(), Test2()])
+	// 	.then((result) => {
+	// 		console.log(result);
+	// 	})
+	
+	request
+		.timeout(0, () => {
+			console.log('请求超时了啊');
 		})
-	
-	// request
-	// 	.timeout(10, () => {
-	// 		console.log('请求超时了啊');
-	// 	})
-	// 	.get('/v1/home/siteinfo', {
-	// 		baseURL: 'https://api.kags.cn'
-	// 	})
-	// 	.then((res) => {
-	// 		console.log(typeof res);
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err);
-	// 	})
+		.get('/', {
+			baseURL: 'https://api.kags.cn',
+			headers: {
+				a: 1
+			}
+		})
+		.then((res) => {
+			console.log(res);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
 		
-	// request
-	// 	.get('/v1/home/siteinfo', {
-	// 		baseURL: 'https://api.kags.cn'
-	// 	})
-	// 	.then((res) => {
-	// 		console.log(typeof res);
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err);
-	// 	})
+	request
+		.get('/v1/home/siteinfo', {
+			baseURL: 'https://api.kags.cn',
+			params: {
+				a: 1,
+				b: 2
+			}
+		})
+		.then((res) => {
+			console.log(res);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
 </script>
 
 <style>
